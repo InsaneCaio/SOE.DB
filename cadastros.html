@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exames AVA</title>
+</head>
+
+<body>
+    
+    <form>
+        <label for="nome">Nome: </label>
+        <input type="text" name="nome" id="nome" required>
+
+        <label for="valor">Valor: </label>
+        <input type="number" name="valor" id="valor" required>
+
+        <label for="obs">Observações: </label>
+        <input type="text" name="obs" id="obs">
+
+        <button type="submit" id="btnAdicionar">Adicionar</button>
+    </form>
+
+    <section class="secao-tabela">
+        <table class="tabela-financeira">
+            <thead>
+                <tr>
+                    <th>Exame</th>
+                    <th>Valor</th>
+                    <th>Observações</th>
+                </tr>
+            </thead>
+            <tbody id="lista-exames">
+                <!-- Insercao de conteudos pelo JS -->
+            </tbody>
+        </table>
+    </section> 
+
+    <!-- Navegação -->
+    <section class="secao-navegacao">
+        <nav>
+            <a href="cadastros.html">Exames</a>
+            <a href="index.html">Orçamento</a>
+        </nav>
+    </section>
+
+    <script src="cadastros.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamentos AVA</title>
+</head>
+
+<body class="container-orcamento">
+    <!-- Bloco de Identificação -->
+    <section class="secao-paciente">
+        <h2>Identificação</h2>
+        <form id="form-identificacao">
+            <div class="grupo-input">
+                <label for="nome-paciente">Paciente: </label>
+                <input type="text" id="nome-paciente" class="input-texto" required>
+
+                <label for="telefone-paciente">Telefone: </label>
+                <input type="text" id="telefone-paciente" class="input-texto" required>
+
+                <label for="nome-operador">Operador: </label>
+                <input type="text" id="nome-operador" class="input-texto" required>
+            </div>
+        </form>
+    </section>
+        
+    </select>
+    <!-- Tabela de Itens -->
+    <section class="secao-tabela">
+        <table class="tabela-financeira">
+            <thead>
+                <tr>
+                    <th>Exame</th>
+                    <th>Valor</th>
+                    <th>Observações</th>
+                </tr>
+            </thead>
+            <tbody id="lista-itens-orcamento">
+
+            </tbody>
+            <tfoot>
+                <tr class="linha-total">
+                    <td colspan="1">Valor Total:</td>
+                    <td colspan="2"><strong id="valor-total">R$ 0,00</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </section> 
+
+    <button id="btn-gerar-pdf" onclick="gerarPDF()">Gerar PDF do Orçamento</button>
+    
+    <!-- Navegação -->
+    <section class="secao-navegacao">
+        <nav>
+            <a href="cadastros.html">Exames</a>
+            <a href="index.html">Orçamento</a>
+        </nav>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="orcamento.js"></script>
+</body>
+
+</html>
