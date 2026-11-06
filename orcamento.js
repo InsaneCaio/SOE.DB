@@ -38,9 +38,14 @@ function iniciarOrcamento() {
         novaLinha.appendChild(btnExcluir);
 
         tbody.appendChild(novaLinha);
-
-        document.getElementById('valor-total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
     });
+
+    if (itemsOrcamento.length == 0){
+        document.getElementById('valor-total').textContent = "R$ 0,00";
+    }
+    else {
+        document.getElementById('valor-total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
 
     const linhaSelect = document.createElement('tr');
     const celulaSelect = document.createElement('td');
@@ -144,4 +149,8 @@ function gerarPDF() {
     });
 
     doc.save(`Orcamento_${nomePaciente.replace(/\s+/g, '_')}.pdf`);
+
+    document.getElementById('nome-paciente').value = '';
+    document.getElementById('telefone-paciente').value = '';
+    document.getElementById('nome-operador').value = '';
 }

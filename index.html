@@ -11,21 +11,21 @@
 <body class="container-orcamento">
     <!-- Bloco de Identificação -->
     <section class="secao-paciente">
-        <h2>Identificação</h2>
+        <h2>Orçamento</h2>
         <form id="form-identificacao">
             <div class="grupo-input">
                 <label for="nome-paciente">Paciente: </label>
                 <input type="text" id="nome-paciente" class="input-texto" required>
 
                 <label for="telefone-paciente">Telefone: </label>
-                <input type="text" id="telefone-paciente" class="input-texto" required>
+                <input type="number" id="telefone-paciente" class="input-texto" required>
 
                 <label for="nome-operador">Operador: </label>
                 <input type="text" id="nome-operador" class="input-texto" required>
             </div>
         </form>
     </section>
-        
+
     </select>
     <!-- Tabela de Itens -->
     <section class="secao-tabela">
@@ -35,6 +35,7 @@
                     <th>Exame</th>
                     <th>Valor</th>
                     <th>Observações</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody id="lista-itens-orcamento">
@@ -47,14 +48,15 @@
                 </tr>
             </tfoot>
         </table>
-    </section> 
+    </section>
 
     <button id="btn-gerar-pdf" onclick="gerarPDF()">Gerar PDF do Orçamento</button>
-    
+
     <!-- Navegação -->
     <section class="secao-navegacao">
+        <h2>Menu</h2>
         <nav>
-            <a href="cadastros.html">Exames</a>
+            <a href="cadastros.html">Cadastro de Exames</a>
             <a href="index.html">Orçamento</a>
         </nav>
     </section>
