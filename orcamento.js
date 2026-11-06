@@ -86,65 +86,62 @@ function salvarOrcamento() {
 iniciarOrcamento();
 
 function gerarPDF() {
-    // 1. Inicializa o jsPDF
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // 2. Captura os dados de Identificação do HTML
     const nomePaciente = document.getElementById('nome-paciente').value || "Não informado";
     const telefonePaciente = document.getElementById('telefone-paciente').value || "Não informado";
     const nomeOperador = document.getElementById('nome-operador').value || "Não informado";
     const valorTotalText = document.getElementById('valor-total').textContent;
 
-    // ----------------------------------------------------
-    // CABEÇALHO DO DOCUMENTO
-    // ----------------------------------------------------
-    doc.setFontSize(18);
-    doc.text("ORÇAMENTO DE EXAMES - AVA", 105, 20, { align: "center" });
+    // Cabeçalho
+    doc.setFillColor(0, 86, 179); // Cor azul institucional
+    doc.rect(0, 0, 210, 25, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(16);
+    doc.text("ORÇAMENTO DE EXAMES - AVA", 105, 16, { align: "center" });
 
-    doc.setFontSize(12);
-    doc.text(`Data: ${new Date().toLocaleDateString('pt-BR')}`, 14, 30);
-    
-    // ----------------------------------------------------
-    // DADOS DO PACIENTE E OPERADOR
-    // ----------------------------------------------------
-    doc.setFontSize(11);
-    doc.text(`Paciente: ${nomePaciente}`, 14, 40);
-    doc.text(`Telefone: ${telefonePaciente}`, 14, 47);
-    doc.text(`Operador: ${nomeOperador}`, 14, 54);
-
-    // Linha divisória visual
-    doc.line(14, 58, 196, 58);
-
-    // ----------------------------------------------------
-    // LISTA DE EXAMES ESCOLHIDOS
-    // ----------------------------------------------------
-    doc.setFontSize(13);
-    doc.text("Exames Selecionados:", 14, 66);
-
-    let linhaY = 74; // Posição vertical onde começa a lista
-
+    // Informações gerais
+    doc.setTextColor(40, 40, 40);
     doc.setFontSize(10);
-    
-    // Percorre a lista de itens adicionados ao orçamento
-    itemsOrcamento.forEach((item, index) => {
-        const textoItem = `${index + 1}. Exame: ${item.nome} | Valor: R$ ${item.valor} | Obs: ${item.obs || '-'}`;
-        
-        doc.text(textoItem, 14, linhaY);
-        linhaY += 8; // Pula a linha verticalmente para o próximo item
+    doc.text(`Data: ${new Date().toLocaleDateString('pt-BR')}`, 14, 34);
+    doc.text(`Paciente: ${nomePaciente}`, 14, 41);
+    doc.text(`Telefone: ${telefonePaciente}`, 14, 48);
+    doc.text(`Operador: ${nomeOperador}`, 14, 55);
+
+    // Mapeia os itens da tabela
+    const dadosTabela = itemsOrcamento.map((item, index) => [
+        index + 1,
+        item.nome,
+        `R$ ${parseFloat(item.valor.toString().replace(',', '.')).toFixed(2).replace('.', ',')}`,
+        item.obs || '-'
+    ]);
+
+    // Desenha a tabela estilizada
+    doc.autoTable({
+        startY: 62,
+        head: [['#', 'Exame', 'Valor', 'Observações']],
+        body: dadosTabela,
+        theme: 'striped',
+        headStyles: {
+            fillColor: [0, 86, 179],
+            textColor: [255, 255, 255],
+            fontStyle: 'bold'
+        },
+        columnStyles: {
+            0: { cellWidth: 12, halign: 'center' },
+            1: { cellWidth: 70 },
+            2: { cellWidth: 35, halign: 'right' },
+            3: { cellWidth: 'auto' }
+        },
+        foot: [['', 'Total', valorTotalText, '']],
+        footStyles: {
+            fillColor: [240, 240, 240],
+            textColor: [0, 86, 179],
+            fontStyle: 'bold',
+            fontSize: 11
+        }
     });
 
-    // Linha divisória antes do total
-    doc.line(14, linhaY + 2, 196, linhaY + 2);
-
-    // ----------------------------------------------------
-    // VALOR TOTAL DO ORÇAMENTO
-    // ----------------------------------------------------
-    doc.setFontSize(14);
-    doc.text(`VALOR TOTAL: ${valorTotalText}`, 14, linhaY + 12);
-
-    // ----------------------------------------------------
-    // GERAR E BAIXAR O ARQUIVO PDF
-    // ----------------------------------------------------
     doc.save(`Orcamento_${nomePaciente.replace(/\s+/g, '_')}.pdf`);
 }

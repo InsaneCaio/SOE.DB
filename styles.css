@@ -1,0 +1,250 @@
+/* ==========================================================================
+   Variáveis Globais e Reset Base
+   ========================================================================== */
+:root {
+    --primary-color: #0056b3;
+    --primary-hover: #004085;
+    --secondary-color: #6c757d;
+    --bg-color: #f4f6f9;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --text-muted: #666666;
+    --border-color: #e0e0e0;
+    --danger-color: #dc3545;
+    --danger-hover: #bd2130;
+    --success-color: #28a745;
+    --radius: 8px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Formulários e Secções
+   ========================================================================== */
+section, form {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--bg-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Form Layout */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.grupo-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-color);
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: calc(var(--radius) / 2);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+    background-color: #fff;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: var(--primary-color);
+}
+
+/* Ajustes no formulário de cadastro */
+body > form label {
+    flex: 1 1 100%;
+}
+
+body > form input {
+    flex: 1 1 calc(33% - 1rem);
+    min-width: 150px;
+}
+
+/* Ajuste no formulário de orçamento */
+.grupo-input label {
+    margin-top: 0.5rem;
+}
+
+.grupo-input input {
+    flex: 1 1 30%;
+    min-width: 200px;
+}
+
+/* ==========================================================================
+   Tabelas
+   ========================================================================== */
+.secao-tabela {
+    padding: 0;
+    overflow-x: auto;
+}
+
+.tabela-financeira {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabela-financeira th,
+.tabela-financeira td {
+    padding: 0.85rem 1.2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tabela-financeira th {
+    background-color: #f8f9fa;
+    color: var(--secondary-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.tabela-financeira tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.tabela-financeira tfoot td {
+    background-color: #f8f9fa;
+    font-size: 1.1rem;
+    border-top: 2px solid var(--border-color);
+}
+
+.tabela-financeira #valor-total {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* Select de adição dentro da tabela */
+.tabela-financeira select {
+    margin-top: 0.5rem;
+    background-color: #f0f7ff;
+    border-color: #b8daff;
+}
+
+/* ==========================================================================
+   Botões
+   ========================================================================== */
+button, 
+#btnAdicionar, 
+#btn-gerar-pdf {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.65rem 1.2rem;
+    border-radius: calc(var(--radius) / 2);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover, 
+#btnAdicionar:hover, 
+#btn-gerar-pdf:hover {
+    background-color: var(--primary-hover);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Botão Excluir gerado no JS */
+td button {
+    background-color: transparent;
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+}
+
+td button:hover {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Botão específico para PDF */
+#btn-gerar-pdf {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: var(--success-color);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#btn-gerar-pdf:hover {
+    background-color: #218838;
+}
+
+/* ==========================================================================
+   Navegação
+   ========================================================================== */
+.secao-navegacao {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: calc(var(--radius) / 2);
+    background-color: #e9ecef;
+    transition: all 0.2s;
+}
+
+nav a:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
