@@ -27,6 +27,10 @@ function carregarTabela (){
             listaExames.splice(index, 1);
 
             salvarLista();
+
+            if (listaExames == null){
+                
+            }
         })
 
         novaLinha.appendChild(celulaNome);
@@ -56,6 +60,12 @@ btnAdd.addEventListener('click', function(event) {
     const valorExame = document.getElementById('valor').value;
     const obsExame = document.getElementById('obs').value;
 
+    // VALIDAÇÃO DE NOME
+    if (nomeExame.trim().length === 0){
+        console.log('Exame sem nome');
+        return;
+    }
+
     console.log(nomeExame);
     console.log(valorExame);
     console.log(obsExame);
@@ -70,12 +80,10 @@ btnAdd.addEventListener('click', function(event) {
 
     salvarLista();
 
-    if (novoExame.valor == 0){
-        listaExames = [];
-    }
-
     console.log("Lista atualizada de exames: ", listaExames);
 
-
+    document.getElementById('nome').value = '';
+    document.getElementById('valor').value = '';
+    document.getElementById('obs').value = '';
 });
 

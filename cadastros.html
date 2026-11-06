@@ -9,19 +9,21 @@
 </head>
 
 <body>
-    
-    <form>
-        <label for="nome">Nome: </label>
-        <input type="text" name="nome" id="nome" required>
+    <section class="secao-exame">
+        <h2>Cadastro de Exames</h2>
+        <form>
+            <label for="nome">Nome: </label>
+            <input type="text" name="nome" id="nome" required>
 
-        <label for="valor">Valor: </label>
-        <input type="number" name="valor" id="valor" required>
+            <label for="valor">Valor: </label>
+            <input type="number" name="valor" id="valor" required>
 
-        <label for="obs">Observações: </label>
-        <input type="text" name="obs" id="obs">
+            <label for="obs">Observações: </label>
+            <input type="text" name="obs" id="obs">
 
-        <button type="submit" id="btnAdicionar">Adicionar</button>
-    </form>
+            <button type="submit" id="btnAdicionar">Adicionar</button>
+        </form>
+    </section>
 
     <section class="secao-tabela">
         <table class="tabela-financeira">
@@ -30,18 +32,20 @@
                     <th>Exame</th>
                     <th>Valor</th>
                     <th>Observações</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody id="lista-exames">
                 <!-- Insercao de conteudos pelo JS -->
             </tbody>
         </table>
-    </section> 
+    </section>
 
     <!-- Navegação -->
     <section class="secao-navegacao">
+        <h2>Menu</h2>
         <nav>
-            <a href="cadastros.html">Exames</a>
+            <a href="cadastros.html">Cadastro de Exames</a>
             <a href="index.html">Orçamento</a>
         </nav>
     </section>
