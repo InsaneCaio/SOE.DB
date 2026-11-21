@@ -37,7 +37,7 @@ body {
 }
 
 /* ==========================================================================
-   Barra Lateral de Navegação (Esquerda)
+   Barra Lateral de Navegação
    ========================================================================== */
 .secao-navegacao {
     background: var(--card-bg);
@@ -51,6 +51,18 @@ body {
     position: sticky;
     top: 0;
     height: 100vh;
+}
+
+.secao-navegacao footer {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.secao-navegacao #logo {
+    max-width: 100%;
+    height: auto;
 }
 
 nav {
