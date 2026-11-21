@@ -25,4 +25,12 @@
 
 ## ✦ Sobre o Projeto
 
-O sistema foi desenvolvido com o objetivo de simplificar o processo orçamental, permitindo que o usuário cadastre seus exames disponíveis para os clientes e gere os orçamentos a partir deles.
+Desenvolvi uma aplicação web voltada para o cadastro, edição de exames e criação de orçamentos para pacientes, centralizando informações e tornando o fluxo de organização do dia a dia muito mais prático e direto.
+A ideia principal do projeto é simplificar o processo orçamental: em vez de depender de controles soltos, o usuário consegue gerenciar seus exames disponíveis e montar orçamentos a partir deles de forma estruturada.
+
+🔧 O que o projeto entrega:
+- Cadastro e edição de exames disponíveis.
+- Geração de orçamentos voltados a pacientes.
+- Centralização das informações em uma interface web acessível.
+
+O sistema continua em aprimoramento constante, servindo também como espaço para aplicar boas práticas de desenvolvimento web, organização de código e evolução contínua na prática.
